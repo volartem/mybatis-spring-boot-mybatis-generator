@@ -3,6 +3,7 @@ package news.project.demo.controllers;
 
 import news.project.demo.mappers.BrandMapper;
 import news.project.demo.mappers.CatalogMapper;
+import news.project.demo.mappers.extended.BrandMapperExtended;
 import news.project.demo.models.Brand;
 import news.project.demo.models.Catalog;
 import org.slf4j.Logger;
@@ -22,7 +23,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 public class BrandController {
 
     @Autowired
-    private BrandMapper brandMapper;
+    private BrandMapperExtended brandMapper;
 
     @Autowired
     private CatalogMapper catalogMapper;
@@ -36,11 +37,6 @@ public class BrandController {
         try {
             brands = brandMapper.selectAllBrands();
             catalogs = catalogMapper.selectAllCatalogs();
-            for(Brand brand: brands) {
-                System.out.println(brand.getId());
-                System.out.println(brand.getName());
-            }
-
         } catch (Exception e) {
             logger.error(e.getMessage());
             e.printStackTrace();
