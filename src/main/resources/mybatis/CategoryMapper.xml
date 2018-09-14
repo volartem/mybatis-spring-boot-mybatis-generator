@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="news.project.demo.mappers.extended.CatalogMapperExtended">
-  <resultMap id="BaseResultMap" type="news.project.demo.models.Catalog">
+<mapper namespace="news.project.demo.mappers.extended.CategoryMapperExtended">
+  <resultMap id="BaseResultMap" type="news.project.demo.models.Category">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="code" jdbcType="VARCHAR" property="code" />
-    <result column="brand_id" jdbcType="INTEGER" property="brandId" />
-    <result column="created" jdbcType="DATE" property="created" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="laximo_category_id" jdbcType="INTEGER" property="brandId" />
   </resultMap>
-  <select id="selectAllCatalogs" resultMap="BaseResultMap">
-    select * from catalogs
+  <select id="selectAllCategories" resultMap="BaseResultMap">
+    select * from categories
   </select>
   <sql id="Example_Where_Clause">
     <where>
@@ -69,15 +68,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, code, brand_id, created
+    id, name, laximo_category_id
   </sql>
-  <select id="selectByExample" parameterType="news.project.demo.models.CatalogCriteria" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="news.project.demo.models.CategoryCriteria" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from catalogs
+    from categories
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -88,70 +87,59 @@
   <select id="selectByPrimaryKey" parameterType="int" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from catalogs
+    from categories
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="int">
-    delete from catalogs
+    delete from categories
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="news.project.demo.models.CatalogCriteria">
-    delete from catalogs
+  <delete id="deleteByExample" parameterType="news.project.demo.models.CategoryCriteria">
+    delete from categories
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="news.project.demo.models.Catalog" useGeneratedKeys="true">
-    insert into catalogs (code, brand_id, created
-      )
-    values (#{code,jdbcType=VARCHAR}, #{brandId,jdbcType=INTEGER}, #{created,jdbcType=DATE}
-      )
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="news.project.demo.models.Category" useGeneratedKeys="true">
+    insert into categories (name, laximo_category_id)
+    values (#{name,jdbcType=VARCHAR}, #{brandId,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="news.project.demo.models.Catalog" useGeneratedKeys="true">
-    insert into catalogs
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="news.project.demo.models.Category" useGeneratedKeys="true">
+    insert into categories
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="code != null">
-        code,
+      <if test="name != null">
+        name,
       </if>
       <if test="brandId != null">
-        brand_id,
-      </if>
-      <if test="created != null">
-        created,
+        laximo_category_id,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="code != null">
-        #{code,jdbcType=VARCHAR},
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
       </if>
       <if test="brandId != null">
         #{brandId,jdbcType=INTEGER},
       </if>
-      <if test="created != null">
-        #{created,jdbcType=DATE},
-      </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="news.project.demo.models.CatalogCriteria" resultType="java.lang.Long">
-    select count(*) from catalogs
+  <select id="countByExample" parameterType="news.project.demo.models.CategoryCriteria" resultType="java.lang.Long">
+    select count(*) from categories
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update catalogs
+    update categories
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.code != null">
-        code = #{record.code,jdbcType=VARCHAR},
+      <if test="record.name != null">
+        name = #{record.name,jdbcType=VARCHAR},
       </if>
       <if test="record.brandId != null">
-        brand_id = #{record.brandId,jdbcType=INTEGER},
-      </if>
-      <if test="record.created != null">
-        created = #{record.created,jdbcType=DATE},
+        laximo_category_id = #{record.brandId,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null">
@@ -159,44 +147,39 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update catalogs
+    update categories
     set id = #{record.id,jdbcType=INTEGER},
-      code = #{record.code,jdbcType=VARCHAR},
-      brand_id = #{record.brandId,jdbcType=INTEGER},
-      created = #{record.created,jdbcType=DATE}
+      name = #{record.name,jdbcType=VARCHAR},
+      laximo_category_id = #{record.brandId,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="news.project.demo.models.Catalog">
-    update catalogs
+  <update id="updateByPrimaryKeySelective" parameterType="news.project.demo.models.Category">
+    update categories
     <set>
-      <if test="code != null">
-        code = #{code,jdbcType=VARCHAR},
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
       </if>
       <if test="brandId != null">
-        brand_id = #{brandId,jdbcType=INTEGER},
-      </if>
-      <if test="created != null">
-        created = #{created,jdbcType=DATE},
+        laximo_category_id = #{brandId,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="news.project.demo.models.Catalog">
-    update catalogs
-    set code = #{code,jdbcType=VARCHAR},
-      brand_id = #{brandId,jdbcType=INTEGER},
-      created = #{created,jdbcType=DATE}
+  <update id="updateByPrimaryKey" parameterType="news.project.demo.models.Category">
+    update categories
+    set name = #{name,jdbcType=VARCHAR},
+      laximo_category_id = #{brandId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="selectByExampleWithRowbounds" parameterType="news.project.demo.models.CatalogCriteria" resultMap="BaseResultMap">
+  <select id="selectByExampleWithRowbounds" parameterType="news.project.demo.models.CategoryCriteria" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from catalogs
+    from categories
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -204,4 +187,5 @@
       order by ${orderByClause}
     </if>
   </select>
+
 </mapper>

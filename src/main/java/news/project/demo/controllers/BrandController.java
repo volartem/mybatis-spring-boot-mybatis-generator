@@ -1,9 +1,8 @@
 package news.project.demo.controllers;
 
 
-import news.project.demo.mappers.BrandMapper;
-import news.project.demo.mappers.CatalogMapper;
 import news.project.demo.mappers.extended.BrandMapperExtended;
+import news.project.demo.mappers.extended.CatalogMapperExtended;
 import news.project.demo.models.Brand;
 import news.project.demo.models.Catalog;
 import org.slf4j.Logger;
@@ -26,7 +25,7 @@ public class BrandController {
     private BrandMapperExtended brandMapper;
 
     @Autowired
-    private CatalogMapper catalogMapper;
+    private CatalogMapperExtended catalogMapper;
 
     private static final Logger logger = LoggerFactory.getLogger(BrandController.class);
 
