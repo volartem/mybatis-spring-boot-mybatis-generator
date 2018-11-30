@@ -7,7 +7,9 @@ public class Category implements Serializable {
 
     private String name;
 
-    private Integer brandId;
+    private Integer outerId;
+
+    private Integer parentOuterId;
 
     private static final long serialVersionUID = 1L;
 
@@ -27,12 +29,20 @@ public class Category implements Serializable {
         this.name = name;
     }
 
-    public Integer getBrandId() {
-        return brandId;
+    public Integer getOuterId() {
+        return outerId;
     }
 
-    public void setBrandId(Integer brandId) {
-        this.brandId = brandId;
+    public void setOuterId(Integer outerId) {
+        this.outerId = outerId;
+    }
+
+    public Integer getParentOuterId() {
+        return parentOuterId;
+    }
+
+    public void setParentOuterId(Integer parentOuterId) {
+        this.parentOuterId = parentOuterId;
     }
 
     @Override
@@ -49,7 +59,8 @@ public class Category implements Serializable {
         Category other = (Category) that;
         return (this.getId() == other.getId())
             && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
-            && (this.getBrandId() == null ? other.getBrandId() == null : this.getBrandId().equals(other.getBrandId()));
+            && (this.getOuterId() == null ? other.getOuterId() == null : this.getOuterId().equals(other.getOuterId()))
+            && (this.getParentOuterId() == null ? other.getParentOuterId() == null : this.getParentOuterId().equals(other.getParentOuterId()));
     }
 
     @Override
@@ -58,7 +69,8 @@ public class Category implements Serializable {
         int result = 1;
         result = prime * result + getId();
         result = prime * result + ((getName() == null) ? 0 : getName().hashCode());
-        result = prime * result + ((getBrandId() == null) ? 0 : getBrandId().hashCode());
+        result = prime * result + ((getOuterId() == null) ? 0 : getOuterId().hashCode());
+        result = prime * result + ((getParentOuterId() == null) ? 0 : getParentOuterId().hashCode());
         return result;
     }
 }

@@ -7,9 +7,6 @@
     <result column="brand_id" jdbcType="INTEGER" property="brandId" />
     <result column="created" jdbcType="DATE" property="created" />
   </resultMap>
-  <select id="selectAllCatalogs" resultMap="BaseResultMap">
-    select * from catalogs
-  </select>
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">

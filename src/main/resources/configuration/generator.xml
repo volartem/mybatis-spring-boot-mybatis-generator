@@ -11,6 +11,7 @@
         <property name="endingDelimiter" value="`"/>
         <plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin"/>
         <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin"/>
         <plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
             <property name="searchString" value="Example$"/>
             <property name="replaceString" value="Criteria"/>
@@ -54,7 +55,8 @@
         <table tableName="categories" domainObjectName="Category" modelType="flat">
             <generatedKey column="id" identity="id" sqlStatement="JDBC"/>
             <columnOverride column="id" property="id" javaType="int"/>
-            <columnOverride column="laximo_category_id" property="brandId" javaType="Integer"/>
+            <columnOverride column="outer_id" property="outerId" javaType="Integer"/>
+            <columnOverride column="parent_outer_id" property="parentOuterId" javaType="Integer"/>
             <columnOverride column="name" property="name" javaType="String"/>
         </table>
     </context>

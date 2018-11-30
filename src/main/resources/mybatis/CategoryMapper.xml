@@ -4,11 +4,9 @@
   <resultMap id="BaseResultMap" type="news.project.demo.models.Category">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="laximo_category_id" jdbcType="INTEGER" property="brandId" />
+    <result column="outer_id" jdbcType="INTEGER" property="outerId" />
+    <result column="parent_outer_id" jdbcType="INTEGER" property="parentOuterId" />
   </resultMap>
-  <select id="selectAllCategories" resultMap="BaseResultMap">
-    select * from categories
-  </select>
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
@@ -68,7 +66,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name, laximo_category_id
+    id, name, outer_id, parent_outer_id
   </sql>
   <select id="selectByExample" parameterType="news.project.demo.models.CategoryCriteria" resultMap="BaseResultMap">
     select
@@ -101,8 +99,10 @@
     </if>
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="news.project.demo.models.Category" useGeneratedKeys="true">
-    insert into categories (name, laximo_category_id)
-    values (#{name,jdbcType=VARCHAR}, #{brandId,jdbcType=INTEGER})
+    insert into categories (name, outer_id, parent_outer_id
+      )
+    values (#{name,jdbcType=VARCHAR}, #{outerId,jdbcType=INTEGER}, #{parentOuterId,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="news.project.demo.models.Category" useGeneratedKeys="true">
     insert into categories
@@ -110,16 +110,22 @@
       <if test="name != null">
         name,
       </if>
-      <if test="brandId != null">
-        laximo_category_id,
+      <if test="outerId != null">
+        outer_id,
+      </if>
+      <if test="parentOuterId != null">
+        parent_outer_id,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
       </if>
-      <if test="brandId != null">
-        #{brandId,jdbcType=INTEGER},
+      <if test="outerId != null">
+        #{outerId,jdbcType=INTEGER},
+      </if>
+      <if test="parentOuterId != null">
+        #{parentOuterId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -138,8 +144,11 @@
       <if test="record.name != null">
         name = #{record.name,jdbcType=VARCHAR},
       </if>
-      <if test="record.brandId != null">
-        laximo_category_id = #{record.brandId,jdbcType=INTEGER},
+      <if test="record.outerId != null">
+        outer_id = #{record.outerId,jdbcType=INTEGER},
+      </if>
+      <if test="record.parentOuterId != null">
+        parent_outer_id = #{record.parentOuterId,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null">
@@ -150,7 +159,8 @@
     update categories
     set id = #{record.id,jdbcType=INTEGER},
       name = #{record.name,jdbcType=VARCHAR},
-      laximo_category_id = #{record.brandId,jdbcType=INTEGER}
+      outer_id = #{record.outerId,jdbcType=INTEGER},
+      parent_outer_id = #{record.parentOuterId,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -161,8 +171,11 @@
       <if test="name != null">
         name = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="brandId != null">
-        laximo_category_id = #{brandId,jdbcType=INTEGER},
+      <if test="outerId != null">
+        outer_id = #{outerId,jdbcType=INTEGER},
+      </if>
+      <if test="parentOuterId != null">
+        parent_outer_id = #{parentOuterId,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -170,7 +183,8 @@
   <update id="updateByPrimaryKey" parameterType="news.project.demo.models.Category">
     update categories
     set name = #{name,jdbcType=VARCHAR},
-      laximo_category_id = #{brandId,jdbcType=INTEGER}
+      outer_id = #{outerId,jdbcType=INTEGER},
+      parent_outer_id = #{parentOuterId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByExampleWithRowbounds" parameterType="news.project.demo.models.CategoryCriteria" resultMap="BaseResultMap">
@@ -187,5 +201,4 @@
       order by ${orderByClause}
     </if>
   </select>
-
 </mapper>

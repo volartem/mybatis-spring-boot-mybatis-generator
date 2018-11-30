@@ -234,63 +234,123 @@ public class CategoryCriteria {
             return (Criteria) this;
         }
 
-        public Criteria andBrandIdIsNull() {
-            addCriterion("laximo_category_id is null");
+        public Criteria andOuterIdIsNull() {
+            addCriterion("outer_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andBrandIdIsNotNull() {
-            addCriterion("laximo_category_id is not null");
+        public Criteria andOuterIdIsNotNull() {
+            addCriterion("outer_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andBrandIdEqualTo(Integer value) {
-            addCriterion("laximo_category_id =", value, "brandId");
+        public Criteria andOuterIdEqualTo(Integer value) {
+            addCriterion("outer_id =", value, "outerId");
             return (Criteria) this;
         }
 
-        public Criteria andBrandIdNotEqualTo(Integer value) {
-            addCriterion("laximo_category_id <>", value, "brandId");
+        public Criteria andOuterIdNotEqualTo(Integer value) {
+            addCriterion("outer_id <>", value, "outerId");
             return (Criteria) this;
         }
 
-        public Criteria andBrandIdGreaterThan(Integer value) {
-            addCriterion("laximo_category_id >", value, "brandId");
+        public Criteria andOuterIdGreaterThan(Integer value) {
+            addCriterion("outer_id >", value, "outerId");
             return (Criteria) this;
         }
 
-        public Criteria andBrandIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("laximo_category_id >=", value, "brandId");
+        public Criteria andOuterIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("outer_id >=", value, "outerId");
             return (Criteria) this;
         }
 
-        public Criteria andBrandIdLessThan(Integer value) {
-            addCriterion("laximo_category_id <", value, "brandId");
+        public Criteria andOuterIdLessThan(Integer value) {
+            addCriterion("outer_id <", value, "outerId");
             return (Criteria) this;
         }
 
-        public Criteria andBrandIdLessThanOrEqualTo(Integer value) {
-            addCriterion("laximo_category_id <=", value, "brandId");
+        public Criteria andOuterIdLessThanOrEqualTo(Integer value) {
+            addCriterion("outer_id <=", value, "outerId");
             return (Criteria) this;
         }
 
-        public Criteria andBrandIdIn(List<Integer> values) {
-            addCriterion("laximo_category_id in", values, "brandId");
+        public Criteria andOuterIdIn(List<Integer> values) {
+            addCriterion("outer_id in", values, "outerId");
             return (Criteria) this;
         }
 
-        public Criteria andBrandIdNotIn(List<Integer> values) {
-            addCriterion("laximo_category_id not in", values, "brandId");
+        public Criteria andOuterIdNotIn(List<Integer> values) {
+            addCriterion("outer_id not in", values, "outerId");
             return (Criteria) this;
         }
 
-        public Criteria andBrandIdBetween(Integer value1, Integer value2) {
-            addCriterion("laximo_category_id between", value1, value2, "brandId");
+        public Criteria andOuterIdBetween(Integer value1, Integer value2) {
+            addCriterion("outer_id between", value1, value2, "outerId");
             return (Criteria) this;
         }
 
-        public Criteria andBrandIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("laximo_category_id not between", value1, value2, "brandId");
+        public Criteria andOuterIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("outer_id not between", value1, value2, "outerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentOuterIdIsNull() {
+            addCriterion("parent_outer_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentOuterIdIsNotNull() {
+            addCriterion("parent_outer_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentOuterIdEqualTo(Integer value) {
+            addCriterion("parent_outer_id =", value, "parentOuterId");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentOuterIdNotEqualTo(Integer value) {
+            addCriterion("parent_outer_id <>", value, "parentOuterId");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentOuterIdGreaterThan(Integer value) {
+            addCriterion("parent_outer_id >", value, "parentOuterId");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentOuterIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("parent_outer_id >=", value, "parentOuterId");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentOuterIdLessThan(Integer value) {
+            addCriterion("parent_outer_id <", value, "parentOuterId");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentOuterIdLessThanOrEqualTo(Integer value) {
+            addCriterion("parent_outer_id <=", value, "parentOuterId");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentOuterIdIn(List<Integer> values) {
+            addCriterion("parent_outer_id in", values, "parentOuterId");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentOuterIdNotIn(List<Integer> values) {
+            addCriterion("parent_outer_id not in", values, "parentOuterId");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentOuterIdBetween(Integer value1, Integer value2) {
+            addCriterion("parent_outer_id between", value1, value2, "parentOuterId");
+            return (Criteria) this;
+        }
+
+        public Criteria andParentOuterIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("parent_outer_id not between", value1, value2, "parentOuterId");
             return (Criteria) this;
         }
     }
