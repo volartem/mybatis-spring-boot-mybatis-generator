@@ -34,7 +34,7 @@ public class BrandController {
         List<Brand> brands = new ArrayList<>();
         List<Catalog> catalogs = new ArrayList<>();
         try {
-            brands = brandMapper.selectAllBrands();
+            brands = brandMapper.selectIds();
             catalogs = catalogMapper.selectAllCatalogs();
         } catch (Exception e) {
             logger.error(e.getMessage());
